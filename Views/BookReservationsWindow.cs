@@ -16,7 +16,10 @@ namespace LibraryApp.Views
         private readonly ClientService clientService;
         private readonly BookReservationService bookReservationService;
 
-
+        /// <summary>
+        /// Инициализирует новый экземпляр класса BookReservationsWindow с заданным контекстом базы данных.
+        /// </summary>
+        /// <param name="context">Контекст базы данных.</param>
         public BookReservationsWindow(db.ApplicationContext context)
         {
             _context = context;
@@ -56,7 +59,9 @@ namespace LibraryApp.Views
             }
         }
 
-        // Добавление пользователя
+        /// <summary>
+        /// Добавляет новую запись бронирования книги.
+        /// </summary>
         private void AddReservation_Click(object sender, EventArgs e)
         {
             BookReservationDialogWindow bookReservationWindow = new BookReservationDialogWindow(new BookReservation(), _context);
@@ -89,7 +94,9 @@ namespace LibraryApp.Views
             }
         }
 
-        //// Редактирование пользователя
+        /// <summary>
+        /// Редактирует существующую запись бронирования книги.
+        /// </summary>
         private void EditReservation_Click(object sender, EventArgs e)
         {
             ListViewItem selectedItem = bookReservationsListView.SelectedItems.Count > 0 ? bookReservationsListView.SelectedItems[0] : null;
@@ -133,7 +140,9 @@ namespace LibraryApp.Views
             }
         }
 
-        //// Удаление записи аренды книги
+        /// <summary>
+        /// Удаляет запись бронирования книги.
+        /// </summary>
         private void DeleteReservation_Click(object sender, EventArgs e)
         {
             ListViewItem selectedItem = bookReservationsListView.SelectedItems.Count > 0 ? bookReservationsListView.SelectedItems[0] : null;
@@ -147,6 +156,9 @@ namespace LibraryApp.Views
             bookReservationsListView.Items.Remove(selectedItem);
         }
 
+        /// <summary>
+        /// Выполняет возврат книги.
+        /// </summary>
         private void ReturnBook_Click(object sender, EventArgs e)
         {
             ListViewItem selectedItem = bookReservationsListView.SelectedItems.Count > 0 ? bookReservationsListView.SelectedItems[0] : null;
@@ -161,6 +173,9 @@ namespace LibraryApp.Views
             UpdateElementView(selectedItem, reservation);
         }
 
+        /// <summary>
+        /// Обновляет информацию о бронировании книги в ListView.
+        /// </summary>
         private void UpdateElementView(ListViewItem selectedItem, BookReservation reservation)
         {
             selectedItem.SubItems[1].Text = reservation.ClientId.ToString();

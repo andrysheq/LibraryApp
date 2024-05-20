@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDialogWindow));
             nameLabel = new Label();
             ageLabel = new Label();
             nameTextBox = new TextBox();
@@ -43,7 +44,7 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new Point(35, 26);
+            nameLabel.Location = new Point(35, 100);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(34, 15);
             nameLabel.TabIndex = 0;
@@ -52,7 +53,7 @@
             // ageLabel
             // 
             ageLabel.AutoSize = true;
-            ageLabel.Location = new Point(35, 61);
+            ageLabel.Location = new Point(35, 32);
             ageLabel.Name = "ageLabel";
             ageLabel.Size = new Size(104, 15);
             ageLabel.TabIndex = 1;
@@ -60,14 +61,14 @@
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(145, 23);
+            nameTextBox.Location = new Point(145, 65);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.Size = new Size(116, 23);
             nameTextBox.TabIndex = 2;
             // 
             // phoneTextBox
             // 
-            phoneTextBox.Location = new Point(145, 58);
+            phoneTextBox.Location = new Point(145, 29);
             phoneTextBox.Name = "phoneTextBox";
             phoneTextBox.Size = new Size(116, 23);
             phoneTextBox.TabIndex = 3;
@@ -95,7 +96,7 @@
             // surnameLabel
             // 
             surnameLabel.AutoSize = true;
-            surnameLabel.Location = new Point(35, 100);
+            surnameLabel.Location = new Point(35, 68);
             surnameLabel.Name = "surnameLabel";
             surnameLabel.Size = new Size(61, 15);
             surnameLabel.TabIndex = 10;
@@ -139,6 +140,7 @@
             Controls.Add(middleNameLabel);
             Controls.Add(surnameTextBox);
             Controls.Add(middleNameTextBox);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "UserDialogWindow";
             Text = "UserWindow";
             ResumeLayout(false);

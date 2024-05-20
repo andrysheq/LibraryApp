@@ -29,6 +29,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             addUserButton = new Button();
             editUserButton = new Button();
             deleteUserButton = new Button();
@@ -56,6 +57,9 @@
             label1 = new Label();
             label2 = new Label();
             groupBox2 = new GroupBox();
+            sortButton = new Button();
+            label4 = new Label();
+            typeSortComboBox = new ComboBox();
             searchDropLabel = new LinkLabel();
             searchLabel = new Label();
             searchlabe = new Label();
@@ -63,8 +67,12 @@
             typeSearchComboBox = new ComboBox();
             searchButton = new Button();
             searchTextBox = new TextBox();
+            groupBox3 = new GroupBox();
+            dbPerformButton = new Button();
+            dbPerformTypeCB = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // addUserButton
@@ -198,7 +206,7 @@
             // 
             // bookReservationMenuButton
             // 
-            bookReservationMenuButton.Location = new Point(766, 738);
+            bookReservationMenuButton.Location = new Point(762, 738);
             bookReservationMenuButton.Name = "bookReservationMenuButton";
             bookReservationMenuButton.Size = new Size(185, 46);
             bookReservationMenuButton.TabIndex = 9;
@@ -283,6 +291,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(sortButton);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(typeSortComboBox);
             groupBox2.Controls.Add(searchDropLabel);
             groupBox2.Controls.Add(searchLabel);
             groupBox2.Controls.Add(searchlabe);
@@ -290,12 +301,41 @@
             groupBox2.Controls.Add(typeSearchComboBox);
             groupBox2.Controls.Add(searchButton);
             groupBox2.Controls.Add(searchTextBox);
-            groupBox2.Location = new Point(766, 435);
+            groupBox2.Location = new Point(762, 431);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(357, 247);
+            groupBox2.Size = new Size(366, 247);
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "Поиск";
+            // 
+            // sortButton
+            // 
+            sortButton.Location = new Point(259, 192);
+            sortButton.Name = "sortButton";
+            sortButton.Size = new Size(92, 23);
+            sortButton.TabIndex = 9;
+            sortButton.Text = "Сортировать";
+            sortButton.UseVisualStyleBackColor = true;
+            sortButton.Click += sortButton_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(16, 165);
+            label4.Name = "label4";
+            label4.Size = new Size(73, 15);
+            label4.TabIndex = 8;
+            label4.Text = "Сортировка";
+            // 
+            // typeSortComboBox
+            // 
+            typeSortComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            typeSortComboBox.FormattingEnabled = true;
+            typeSortComboBox.Items.AddRange(new object[] { "А-Я", "Я-А", "Меньше страниц", "Больше страниц" });
+            typeSortComboBox.Location = new Point(14, 192);
+            typeSortComboBox.Name = "typeSortComboBox";
+            typeSortComboBox.Size = new Size(223, 23);
+            typeSortComboBox.TabIndex = 7;
             // 
             // searchDropLabel
             // 
@@ -312,7 +352,7 @@
             // searchLabel
             // 
             searchLabel.AutoSize = true;
-            searchLabel.Location = new Point(79, 77);
+            searchLabel.Location = new Point(79, 72);
             searchLabel.Name = "searchLabel";
             searchLabel.Size = new Size(0, 15);
             searchLabel.TabIndex = 5;
@@ -320,7 +360,7 @@
             // searchlabe
             // 
             searchlabe.AutoSize = true;
-            searchlabe.Location = new Point(14, 77);
+            searchlabe.Location = new Point(14, 72);
             searchlabe.Name = "searchlabe";
             searchlabe.Size = new Size(113, 15);
             searchlabe.TabIndex = 4;
@@ -330,7 +370,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(14, 131);
+            label3.Location = new Point(14, 102);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
             label3.TabIndex = 3;
@@ -341,11 +381,10 @@
             typeSearchComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             typeSearchComboBox.FormattingEnabled = true;
             typeSearchComboBox.Items.AddRange(new object[] { "По названию", "По автору" });
-            typeSearchComboBox.Location = new Point(14, 159);
+            typeSearchComboBox.Location = new Point(14, 130);
             typeSearchComboBox.Name = "typeSearchComboBox";
             typeSearchComboBox.Size = new Size(223, 23);
             typeSearchComboBox.TabIndex = 2;
-            typeSearchComboBox.SelectedIndex = 0;
             // 
             // searchButton
             // 
@@ -364,11 +403,43 @@
             searchTextBox.Size = new Size(223, 23);
             searchTextBox.TabIndex = 0;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(dbPerformButton);
+            groupBox3.Controls.Add(dbPerformTypeCB);
+            groupBox3.Location = new Point(762, 296);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(307, 88);
+            groupBox3.TabIndex = 15;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Действия с БД";
+            // 
+            // dbPerformButton
+            // 
+            dbPerformButton.Location = new Point(206, 31);
+            dbPerformButton.Name = "dbPerformButton";
+            dbPerformButton.Size = new Size(84, 23);
+            dbPerformButton.TabIndex = 1;
+            dbPerformButton.Text = "Выполнить";
+            dbPerformButton.UseVisualStyleBackColor = true;
+            dbPerformButton.Click += dbPerformButton_Click;
+            // 
+            // dbPerformTypeCB
+            // 
+            dbPerformTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
+            dbPerformTypeCB.FormattingEnabled = true;
+            dbPerformTypeCB.Items.AddRange(new object[] { "Удалить БД", "Создать БД", "Сохранить БД в файл" });
+            dbPerformTypeCB.Location = new Point(10, 31);
+            dbPerformTypeCB.Name = "dbPerformTypeCB";
+            dbPerformTypeCB.Size = new Size(166, 23);
+            dbPerformTypeCB.TabIndex = 0;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1194, 829);
+            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -382,13 +453,15 @@
             Controls.Add(editUserButton);
             Controls.Add(addUserButton);
             Controls.Add(usersListView);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainWindow";
-            Text = "MainWindow";
+            Text = "Библиотека";
             Load += MainWindow_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -429,5 +502,11 @@
         private Label searchLabel;
         private Label searchlabe;
         private LinkLabel searchDropLabel;
+        private GroupBox groupBox3;
+        private Button dbPerformButton;
+        private ComboBox dbPerformTypeCB;
+        private Label label4;
+        private ComboBox typeSortComboBox;
+        private Button sortButton;
     }
 }

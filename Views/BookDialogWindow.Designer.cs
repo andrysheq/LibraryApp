@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookDialogWindow));
             nameLabel = new Label();
             ageLabel = new Label();
             titleTextBox = new TextBox();
@@ -58,14 +59,14 @@
             ageLabel.TabIndex = 1;
             ageLabel.Text = "Автор:";
             // 
-            // nameTextBox
+            // titleTextBox
             // 
             titleTextBox.Location = new Point(189, 27);
             titleTextBox.Name = "titleTextBox";
             titleTextBox.Size = new Size(116, 23);
             titleTextBox.TabIndex = 2;
             // 
-            // ageTextBox
+            // authorTextBox
             // 
             authorTextBox.Location = new Point(189, 62);
             authorTextBox.Name = "authorTextBox";
@@ -92,17 +93,17 @@
             cancelButton.UseVisualStyleBackColor = true;
             cancelButton.Click += cancelButton_Click;
             // 
-            // textBox1
+            // yearTextBox
             // 
             yearTextBox.Location = new Point(189, 135);
             yearTextBox.Name = "yearTextBox";
             yearTextBox.Size = new Size(116, 23);
             yearTextBox.TabIndex = 7;
             // 
-            // textBox2
+            // pagesTextBox
             // 
             pagesTextBox.Location = new Point(189, 100);
-            pagesTextBox.Name = "pageTextBox";
+            pagesTextBox.Name = "pagesTextBox";
             pagesTextBox.Size = new Size(116, 23);
             pagesTextBox.TabIndex = 6;
             // 
@@ -139,8 +140,9 @@
             Controls.Add(titleTextBox);
             Controls.Add(ageLabel);
             Controls.Add(nameLabel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookDialogWindow";
-            Text = "UserWindow";
+            Text = "Редактор книги";
             ResumeLayout(false);
             PerformLayout();
         }
