@@ -5,10 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp.Views
 {
+    /// <summary>
+    /// Окно диалога для добавления или редактирования информации о книге.
+    /// </summary>
     public partial class BookDialogWindow : Form
     {
+        /// <summary>
+        /// Книга, с которой работает окно диалога.
+        /// </summary>
         public Book Book { get; private set; }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса BookDialogWindow с заданной книгой.
+        /// </summary>
+        /// <param name="book">Книга, с которой будет работать окно диалога.</param>
         public BookDialogWindow(Book book)
         {
             InitializeComponent();
@@ -16,6 +26,9 @@ namespace LibraryApp.Views
             InitializeBindings();
         }
 
+        /// <summary>
+        /// Инициализирует привязки данных.
+        /// </summary>
         private void InitializeBindings()
         {
             // Привязка свойств текстовых полей к свойствам объекта Book
@@ -25,6 +38,9 @@ namespace LibraryApp.Views
             pagesTextBox.DataBindings.Add("Text", Book, "PageCount");
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "ОК".
+        /// </summary>
         private void okButton_Click(object sender, EventArgs e)
         {
             // Проверка введенных данных
@@ -35,11 +51,17 @@ namespace LibraryApp.Views
             DialogResult = DialogResult.OK;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Отмена".
+        /// </summary>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Abort;
         }
 
+        /// <summary>
+        /// Проверяет корректность введенного названия книги.
+        /// </summary>
         private bool ValidateTitle()
         {
             if (string.IsNullOrWhiteSpace(titleTextBox.Text))
@@ -50,6 +72,9 @@ namespace LibraryApp.Views
             return true;
         }
 
+        /// <summary>
+        /// Проверяет корректность введенного автора книги.
+        /// </summary>
         private bool ValidateAuthor()
         {
             if (string.IsNullOrWhiteSpace(authorTextBox.Text))
@@ -60,6 +85,9 @@ namespace LibraryApp.Views
             return true;
         }
 
+        /// <summary>
+        /// Проверяет корректность введенного года издания книги.
+        /// </summary>
         private bool ValidateYear()
         {
             int year;
@@ -71,6 +99,9 @@ namespace LibraryApp.Views
             return true;
         }
 
+        /// <summary>
+        /// Проверяет корректность введенного количества страниц книги.
+        /// </summary>
         private bool ValidatePages()
         {
             int pages;

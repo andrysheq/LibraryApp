@@ -39,7 +39,9 @@ namespace LibraryApp.Views
             FillBookView(bookService.GetAllBooks());
         }
 
-        // Добавление пользователя
+        /// <summary>
+        /// Обработчик нажатия кнопки "Добавить пользователя".
+        /// </summary>
         private void AddUser_Click(object sender, EventArgs e)
         {
             UserDialogWindow userWindow = new UserDialogWindow(new Client());
@@ -59,7 +61,9 @@ namespace LibraryApp.Views
             }
         }
 
-        // Редактирование пользователя
+        /// <summary>
+        /// Обработчик нажатия кнопки "Редактировать пользователя".
+        /// </summary>
         private void EditUser_Click(object sender, EventArgs e)
         {
             ListViewItem selectedItem = usersListView.SelectedItems.Count > 0 ? usersListView.SelectedItems[0] : null;
@@ -93,7 +97,9 @@ namespace LibraryApp.Views
             }
         }
 
-        // Удаление пользователя
+        /// <summary>
+        /// Обработчик нажатия кнопки "Удалить пользователя".
+        /// </summary>
         private void DeleteUser_Click(object sender, EventArgs e)
         {
             ListViewItem selectedItem = usersListView.SelectedItems.Count > 0 ? usersListView.SelectedItems[0] : null;
@@ -112,7 +118,9 @@ namespace LibraryApp.Views
             usersListView.Items.Remove(selectedItem);
         }
 
-        // Добавление пользователя
+        /// <summary>
+        /// Обработчик нажатия кнопки "Добавить книгу".
+        /// </summary>
         private void AddBook_Click(object sender, EventArgs e)
         {
             BookDialogWindow bookWindow = new BookDialogWindow(new Book());
@@ -132,7 +140,9 @@ namespace LibraryApp.Views
             }
         }
 
-        // Редактирование пользователя
+        /// <summary>
+        /// Обработчик нажатия кнопки "Редактировать книгу".
+        /// </summary>
         private void EditBook_Click(object sender, EventArgs e)
         {
             ListViewItem selectedItem = bookList.SelectedItems.Count > 0 ? bookList.SelectedItems[0] : null;
@@ -166,7 +176,9 @@ namespace LibraryApp.Views
             }
         }
 
-        // Удаление пользователя
+        /// <summary>
+        /// Обработчик нажатия кнопки "Удалить книгу".
+        /// </summary>
         private void DeleteBook_Click(object sender, EventArgs e)
         {
             ListViewItem selectedItem = bookList.SelectedItems.Count > 0 ? bookList.SelectedItems[0] : null;
@@ -184,23 +196,36 @@ namespace LibraryApp.Views
             // Удаляем элемент из ListView
             bookList.Items.Remove(selectedItem);
         }
-
+        /// <summary>
+        /// Очистка списка книг
+        /// </summary>
         private void BookListClear()
         {
             bookList.Items.Clear();
         }
 
+        /// <summary>
+        /// Очищает список клиентов в пользовательском интерфейсе.
+        /// </summary>
         private void ClientListClear()
         {
             usersListView.Items.Clear();
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Бронирование книги".
+        /// </summary>
         private void bookReservationMenuButton_Click(object sender, EventArgs e)
         {
             BookReservationsWindow bookWindow = new BookReservationsWindow(db);
             bookWindow.Show();
         }
 
+        /// <summary>
+        /// Обновляет информацию о клиенте в пользовательском интерфейсе.
+        /// </summary>
+        /// <param name="selectedItem">Выбранный элемент в списке клиентов.</param>
+        /// <param name="client">Информация о клиенте для обновления.</param>
         private void UpdateClientView(ListViewItem selectedItem, Client client)
         {
             selectedItem.SubItems[1].Text = client.Name.ToString();
@@ -209,6 +234,11 @@ namespace LibraryApp.Views
             selectedItem.SubItems[4].Text = client.PhoneNumber.ToString();
         }
 
+        /// <summary>
+        /// Обновляет информацию о книге в пользовательском интерфейсе.
+        /// </summary>
+        /// <param name="selectedItem">Выбранный элемент в списке книг.</param>
+        /// <param name="book">Информация о книге для обновления.</param>
         private void UpdateBookView(ListViewItem selectedItem, Book book)
         {
             selectedItem.SubItems[1].Text = book.Title;
@@ -217,6 +247,10 @@ namespace LibraryApp.Views
             selectedItem.SubItems[4].Text = book.PageCount.ToString();
         }
 
+        /// <summary>
+        /// Заполняет список клиентов в пользовательском интерфейсе.
+        /// </summary>
+        /// <param name="clients">Список клиентов для отображения.</param>
         private void FillClientView(List<Client> clients)
         {
             ClientListClear();
@@ -232,6 +266,10 @@ namespace LibraryApp.Views
             }
         }
 
+        /// <summary>
+        /// Заполняет список книг в пользовательском интерфейсе.
+        /// </summary>
+        /// <param name="books">Список книг для отображения.</param>
         private void FillBookView(List<Book> books)
         {
             BookListClear();
@@ -246,6 +284,9 @@ namespace LibraryApp.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Фильтровать поиск клиентов".
+        /// </summary>
         private void filterSearchButton_Click(object sender, EventArgs e)
         {
             ClientListClear();
@@ -268,6 +309,9 @@ namespace LibraryApp.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия ссылки "Сбросить фильтры".
+        /// </summary>
         private void dropFiltersLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             newComerRadioButton.Checked = false;
@@ -275,6 +319,9 @@ namespace LibraryApp.Views
             FillClientView(clientService.GetAllClients());
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Поиск книг".
+        /// </summary>
         private void searchButton_Click(object sender, EventArgs e)
         {
             string searchType = typeSearchComboBox.SelectedItem.ToString();
@@ -296,6 +343,9 @@ namespace LibraryApp.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия ссылки "Сбросить поиск".
+        /// </summary>
         private void searchDropLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             searchTextBox.Text = "";
@@ -303,6 +353,9 @@ namespace LibraryApp.Views
             FillBookView(bookService.GetAllBooks());
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Выполнить".
+        /// </summary>
         private void dbPerformButton_Click(object sender, EventArgs e)
         {
             if(dbPerformTypeCB.SelectedIndex == 0)
@@ -319,6 +372,9 @@ namespace LibraryApp.Views
             }
         }
 
+        /// <summary>
+        /// Сохраняет базу данных в формате JSON.
+        /// </summary>
         public void SaveDatabaseToJson()
         {
             var saveFileDialog = new SaveFileDialog

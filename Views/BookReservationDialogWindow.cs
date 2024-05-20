@@ -6,12 +6,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp.Views
 {
+    /// <summary>
+    /// Окно диалога для добавления или редактирования информации о бронировании книги.
+    /// </summary>
     public partial class BookReservationDialogWindow : Form
     {
+        /// <summary>
+        /// Бронирование книги, с которым работает окно диалога.
+        /// </summary>
         public BookReservation BookReservation { get; private set; }
+
         private readonly BookService bookService;
         private readonly ClientService clientService;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса BookReservationDialogWindow с заданным бронированием книги и контекстом базы данных.
+        /// </summary>
+        /// <param name="bookReservation">Бронирование книги, с которым будет работать окно диалога.</param>
+        /// <param name="context">Контекст базы данных.</param>
         public BookReservationDialogWindow(BookReservation bookReservation, db.ApplicationContext context)
         {
             InitializeComponent();
@@ -21,9 +33,12 @@ namespace LibraryApp.Views
             InitializeBindings();
         }
 
+        /// <summary>
+        /// Инициализирует привязки данных.
+        /// </summary>
         private void InitializeBindings()
         {
-            // Привязка свойств текстовых полей к свойствам объекта User
+            // Привязка свойств текстовых полей к свойствам объекта BookReservation
             bookIdTextBox.DataBindings.Add("Text", BookReservation, "BookId");
             clientIdTextBox.DataBindings.Add("Text", BookReservation, "ClientId");
             issueDatePicker.DataBindings.Add("Value", BookReservation, "IssueDate");
@@ -35,6 +50,9 @@ namespace LibraryApp.Views
             };
         }
 
+        /// <summary>
+        /// Проверяет корректность идентификаторов книги и клиента.
+        /// </summary>
         private bool ValidateBookAndClient()
         {
             if (!int.TryParse(bookIdTextBox.Text, out int bookId))
@@ -64,6 +82,9 @@ namespace LibraryApp.Views
             return true;
         }
 
+        /// <summary>
+        /// Проверяет корректность даты выдачи и возврата книги.
+        /// </summary>
         private bool ValidateDates()
         {
             if (dueDatePicker.Value <= issueDatePicker.Value)
@@ -74,6 +95,9 @@ namespace LibraryApp.Views
             return true;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "ОК".
+        /// </summary>
         private void okButton_Click(object sender, EventArgs e)
         {
             if (ValidateBookAndClient() && ValidateDates())
@@ -82,6 +106,9 @@ namespace LibraryApp.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Отмена".
+        /// </summary>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Abort;

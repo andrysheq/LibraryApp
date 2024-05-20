@@ -7,8 +7,15 @@ namespace LibraryApp.Views
 {
     public partial class UserDialogWindow : Form
     {
+        /// <summary>
+        /// Пользователь, информация о котором редактируется.
+        /// </summary>
         public Client User { get; private set; }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр окна для редактирования информации о пользователе.
+        /// </summary>
+        /// <param name="user">Пользователь, информацию о котором нужно редактировать.</param>
         public UserDialogWindow(Client user)
         {
             InitializeComponent();
@@ -16,6 +23,9 @@ namespace LibraryApp.Views
             InitializeBindings();
         }
 
+        /// <summary>
+        /// Инициализирует привязки данных между элементами управления и объектом пользователя.
+        /// </summary>
         private void InitializeBindings()
         {
             // Привязка свойств текстовых полей к свойствам объекта User
@@ -25,6 +35,10 @@ namespace LibraryApp.Views
             middleNameTextBox.DataBindings.Add("Text", User, "MiddleName");
         }
 
+        /// <summary>
+        /// Проверяет валидность введенного имени пользователя.
+        /// </summary>
+        /// <returns>True, если имя пользователя валидно, иначе False.</returns>
         private bool ValidateName()
         {
             if (string.IsNullOrWhiteSpace(nameTextBox.Text))
@@ -45,6 +59,10 @@ namespace LibraryApp.Views
             return true;
         }
 
+        /// <summary>
+        /// Проверяет валидность введенного номера телефона пользователя.
+        /// </summary>
+        /// <returns>True, если номер телефона валиден, иначе False.</returns>
         private bool ValidatePhoneNumber()
         {
             if (string.IsNullOrWhiteSpace(phoneTextBox.Text))
@@ -60,6 +78,9 @@ namespace LibraryApp.Views
             return true;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "OK".
+        /// </summary>
         private void okButton_Click(object sender, EventArgs e)
         {
             if (ValidateName() && ValidatePhoneNumber())
@@ -68,6 +89,9 @@ namespace LibraryApp.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки "Отмена".
+        /// </summary>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Abort;
