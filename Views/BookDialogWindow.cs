@@ -63,9 +63,9 @@ namespace LibraryApp.Views
         private bool ValidateYear()
         {
             int year;
-            if (!int.TryParse(yearTextBox.Text, out year) || year < 0)
+            if (!int.TryParse(yearTextBox.Text, out year) || year < 1)
             {
-                MessageBox.Show("Пожалуйста, введите корректный год издания (целое неотрицательное число).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пожалуйста, введите корректный год издания (целое число больше нуля).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -74,9 +74,9 @@ namespace LibraryApp.Views
         private bool ValidatePages()
         {
             int pages;
-            if (!int.TryParse(pagesTextBox.Text, out pages) || pages < 0)
+            if (!int.TryParse(pagesTextBox.Text, out pages) || pages < 1)
             {
-                MessageBox.Show("Пожалуйста, введите корректное количество страниц (целое неотрицательное число).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пожалуйста, введите корректное количество страниц (целое число больше нуля).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

@@ -64,9 +64,19 @@ namespace LibraryApp.Views
             return true;
         }
 
+        private bool ValidateDates()
+        {
+            if (dueDatePicker.Value <= issueDatePicker.Value)
+            {
+                MessageBox.Show("Дата возврата должна быть позже даты выдачи.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
         private void okButton_Click(object sender, EventArgs e)
         {
-            if (ValidateBookAndClient())
+            if (ValidateBookAndClient() && ValidateDates())
             {
                 DialogResult = DialogResult.OK;
             }

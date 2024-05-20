@@ -5,6 +5,7 @@ using LibraryApp.db;
 using LibraryApp.Models;
 using LibraryApp.Services;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace LibraryApp.Views
@@ -14,6 +15,7 @@ namespace LibraryApp.Views
         private db.ApplicationContext db = new db.ApplicationContext();
         private readonly BookService bookService;
         private readonly ClientService clientService;
+        private readonly BookReservationService bookReservationService;
         private ListView usersListView;
 
         public MainWindow()
@@ -21,6 +23,7 @@ namespace LibraryApp.Views
             InitializeComponent();
             bookService = new BookService(db);
             clientService = new ClientService(db);
+            bookReservationService = new BookReservationService(db);
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -298,6 +301,53 @@ namespace LibraryApp.Views
             searchTextBox.Text = "";
             searchlabe.Visible = false;
             FillBookView(bookService.GetAllBooks());
+        }
+
+        private void dbPerformButton_Click(object sender, EventArgs e)
+        {
+            if(dbPerformTypeCB.SelectedIndex == 0)
+            {
+                db.Database.EnsureDeleted();
+            }
+            else if(dbPerformTypeCB.SelectedIndex == 1)
+            {
+                db.Database.EnsureCreated();
+            }
+            else
+            {
+                SaveDatabaseToJson();
+            }
+        }
+
+        public void SaveDatabaseToJson()
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Title = "Сохранить JSON файл",
+                DefaultExt = ".json",
+                Filter = "JSON файл (*.json)|*.json|Все файлы (*.*)|*.*"
+            };
+
+            // Показываем диалоговое окно и проверяем результат
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Получаем путь к файлу
+                string filePath = saveFileDialog.FileName;
+
+                // Получаем все данные для сохранения
+                var dataToSave = new
+                {
+                    Clients = clientService.GetAllClients(),
+                    Books = bookService.GetAllBooks(),
+                    BookReservations = bookReservationService.GetAllBookReservations()
+                };
+
+                // Сериализуем данные в JSON и записываем в файл
+                string jsonData = JsonConvert.SerializeObject(dataToSave, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(filePath, jsonData);
+
+                MessageBox.Show("Файл успешно сохранен: " + filePath);
+            }
         }
     }
 }

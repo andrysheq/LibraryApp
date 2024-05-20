@@ -125,14 +125,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1068, 759);
+            ClientSize = new Size(829, 382);
             Controls.Add(button1);
             Controls.Add(deleteReservationButton);
             Controls.Add(editReservationButton);
             Controls.Add(addReservationButton);
             Controls.Add(bookReservationsListView);
             Name = "BookReservationsWindow";
-            Text = "MainWindow";
+            Text = "Меню учёта выданных книг";
             ResumeLayout(false);
         }
 

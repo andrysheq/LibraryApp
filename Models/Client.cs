@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace LibraryApp.Models
 {
@@ -14,7 +15,7 @@ namespace LibraryApp.Models
         public string MiddleName { get; set; }
         public int Id { get; set; }
         public string PhoneNumber { get; set; }
-        public ICollection<BookReservation> BookReservations { get; set; }
+        [JsonIgnore] public ICollection<BookReservation> BookReservations { get; set; }
 
         // Конструктор по умолчанию
         public Client()

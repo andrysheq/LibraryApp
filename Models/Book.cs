@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace LibraryApp.Models
 {
@@ -14,7 +15,7 @@ namespace LibraryApp.Models
         public int Id { get; set; }
         public int Year { get; set; }
         public int PageCount { get; set; }
-        public BookReservation BookReservation { get; set; }
+        [JsonIgnore] public BookReservation BookReservation { get; set; }
 
         // Конструктор по умолчанию
         public Book() { }

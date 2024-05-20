@@ -63,8 +63,12 @@
             typeSearchComboBox = new ComboBox();
             searchButton = new Button();
             searchTextBox = new TextBox();
+            groupBox3 = new GroupBox();
+            dbPerformButton = new Button();
+            dbPerformTypeCB = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // addUserButton
@@ -198,7 +202,7 @@
             // 
             // bookReservationMenuButton
             // 
-            bookReservationMenuButton.Location = new Point(766, 738);
+            bookReservationMenuButton.Location = new Point(762, 738);
             bookReservationMenuButton.Name = "bookReservationMenuButton";
             bookReservationMenuButton.Size = new Size(185, 46);
             bookReservationMenuButton.TabIndex = 9;
@@ -290,7 +294,7 @@
             groupBox2.Controls.Add(typeSearchComboBox);
             groupBox2.Controls.Add(searchButton);
             groupBox2.Controls.Add(searchTextBox);
-            groupBox2.Location = new Point(766, 435);
+            groupBox2.Location = new Point(762, 431);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(357, 247);
             groupBox2.TabIndex = 14;
@@ -345,7 +349,6 @@
             typeSearchComboBox.Name = "typeSearchComboBox";
             typeSearchComboBox.Size = new Size(223, 23);
             typeSearchComboBox.TabIndex = 2;
-            typeSearchComboBox.SelectedIndex = 0;
             // 
             // searchButton
             // 
@@ -364,11 +367,43 @@
             searchTextBox.Size = new Size(223, 23);
             searchTextBox.TabIndex = 0;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(dbPerformButton);
+            groupBox3.Controls.Add(dbPerformTypeCB);
+            groupBox3.Location = new Point(762, 296);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(307, 88);
+            groupBox3.TabIndex = 15;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Действия с БД";
+            // 
+            // dbPerformButton
+            // 
+            dbPerformButton.Location = new Point(206, 31);
+            dbPerformButton.Name = "dbPerformButton";
+            dbPerformButton.Size = new Size(84, 23);
+            dbPerformButton.TabIndex = 1;
+            dbPerformButton.Text = "Выполнить";
+            dbPerformButton.UseVisualStyleBackColor = true;
+            dbPerformButton.Click += dbPerformButton_Click;
+            // 
+            // dbPerformTypeCB
+            // 
+            dbPerformTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
+            dbPerformTypeCB.FormattingEnabled = true;
+            dbPerformTypeCB.Items.AddRange(new object[] { "Удалить БД", "Создать БД", "Сохранить БД в файл" });
+            dbPerformTypeCB.Location = new Point(10, 31);
+            dbPerformTypeCB.Name = "dbPerformTypeCB";
+            dbPerformTypeCB.Size = new Size(166, 23);
+            dbPerformTypeCB.TabIndex = 0;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1194, 829);
+            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -383,12 +418,13 @@
             Controls.Add(addUserButton);
             Controls.Add(usersListView);
             Name = "MainWindow";
-            Text = "MainWindow";
+            Text = "Библиотека";
             Load += MainWindow_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -429,5 +465,8 @@
         private Label searchLabel;
         private Label searchlabe;
         private LinkLabel searchDropLabel;
+        private GroupBox groupBox3;
+        private Button dbPerformButton;
+        private ComboBox dbPerformTypeCB;
     }
 }
