@@ -65,7 +65,6 @@
             nameTextBox.Name = "nameTextBox";
             nameTextBox.Size = new Size(116, 23);
             nameTextBox.TabIndex = 2;
-            nameTextBox.TextChanged += nameTextBox_TextChanged;
             // 
             // phoneTextBox
             // 

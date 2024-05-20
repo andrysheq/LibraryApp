@@ -143,7 +143,7 @@
             Controls.Add(nameLabel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookReservationDialogWindow";
-            Text = "Book Reservation";
+            Text = "Редактор резервации книги";
             ResumeLayout(false);
             PerformLayout();
         }

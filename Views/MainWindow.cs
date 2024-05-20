@@ -37,6 +37,10 @@ namespace LibraryApp.Views
             // Добавляем элементы в ListView из БД
             FillClientView(clientService.GetAllClients());
             FillBookView(bookService.GetAllBooks());
+
+            typeSearchComboBox.SelectedIndex = 0;
+            typeSortComboBox.SelectedIndex = 0;
+            dbPerformTypeCB.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -358,13 +362,13 @@ namespace LibraryApp.Views
         /// </summary>
         private void dbPerformButton_Click(object sender, EventArgs e)
         {
-            if(dbPerformTypeCB.SelectedIndex == 0)
+            if (dbPerformTypeCB.SelectedIndex == 0)
             {
                 db.Database.EnsureDeleted();
                 BookListClear();
                 ClientListClear();
             }
-            else if(dbPerformTypeCB.SelectedIndex == 1)
+            else if (dbPerformTypeCB.SelectedIndex == 1)
             {
                 db.Database.EnsureCreated();
                 BookListClear();
@@ -410,6 +414,36 @@ namespace LibraryApp.Views
 
                 MessageBox.Show("Файл успешно сохранен: " + filePath);
             }
+        }
+
+        /// <summary>
+        /// Сортировка книг.
+        /// </summary>
+        private void sortButton_Click(object sender, EventArgs e)
+        {
+            string selectedSortType = typeSortComboBox.SelectedItem.ToString();
+
+            List<Book> books = bookService.GetAllBooks();
+            List<Book> result = new List<Book>();
+            switch (selectedSortType)
+            {
+                case "А-Я":
+                    result = books.OrderBy(item => item.Title).ToList();
+                    break;
+                case "Я-А":
+                    result = books.OrderByDescending(item => item.Title).ToList();
+                    break;
+                case "Меньше страниц":
+                    result = books.OrderBy(item => item.PageCount).ToList();
+                    break;
+                case "Больше страниц":
+                    result = books.OrderByDescending(item => item.PageCount).ToList();
+                    break;
+                default:
+                    // Обработать неизвестный тип сортировки
+                    break;
+            }
+            FillBookView(result);
         }
     }
 }

@@ -96,10 +96,5 @@ namespace LibraryApp.Views
         {
             DialogResult = DialogResult.Abort;
         }
-
-        private void nameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

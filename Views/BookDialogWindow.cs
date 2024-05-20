@@ -91,7 +91,7 @@ namespace LibraryApp.Views
         private bool ValidateYear()
         {
             int year;
-            if (!int.TryParse(yearTextBox.Text, out year) || year < 1)
+            if (!int.TryParse(yearTextBox.Text, out year) || year < 1990 || year > 2024)
             {
                 MessageBox.Show("Пожалуйста, введите корректный год издания (целое число больше нуля).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -105,7 +105,7 @@ namespace LibraryApp.Views
         private bool ValidatePages()
         {
             int pages;
-            if (!int.TryParse(pagesTextBox.Text, out pages) || pages < 1)
+            if (!int.TryParse(pagesTextBox.Text, out pages) || pages < 10 || pages >10000)
             {
                 MessageBox.Show("Пожалуйста, введите корректное количество страниц (целое число больше нуля).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
