@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeWindow));
             label1 = new Label();
             continueButton = new Button();
             label2 = new Label();
@@ -62,6 +63,7 @@
             Controls.Add(label2);
             Controls.Add(continueButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "WelcomeWindow";
             Text = "ИС \"Библиотека\"";
             ResumeLayout(false);

@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookReservationDialogWindow));
             nameLabel = new Label();
             ageLabel = new Label();
             bookIdTextBox = new TextBox();
@@ -67,9 +68,18 @@
             issueDateLabel.AutoSize = true;
             issueDateLabel.Location = new Point(79, 100);
             issueDateLabel.Name = "issueDateLabel";
-            issueDateLabel.Size = new Size(76, 15);
+            issueDateLabel.Size = new Size(79, 15);
             issueDateLabel.TabIndex = 6;
             issueDateLabel.Text = "Дата выдачи:";
+            // 
+            // dueDateLabel
+            // 
+            dueDateLabel.AutoSize = true;
+            dueDateLabel.Location = new Point(79, 135);
+            dueDateLabel.Name = "dueDateLabel";
+            dueDateLabel.Size = new Size(86, 15);
+            dueDateLabel.TabIndex = 8;
+            dueDateLabel.Text = "Дата возврата:";
             // 
             // issueDatePicker
             // 
@@ -77,15 +87,6 @@
             issueDatePicker.Name = "issueDatePicker";
             issueDatePicker.Size = new Size(116, 23);
             issueDatePicker.TabIndex = 7;
-            // 
-            // dueDateLabel
-            // 
-            dueDateLabel.AutoSize = true;
-            dueDateLabel.Location = new Point(79, 135);
-            dueDateLabel.Name = "dueDateLabel";
-            dueDateLabel.Size = new Size(105, 15);
-            dueDateLabel.TabIndex = 8;
-            dueDateLabel.Text = "Дата возврата:";
             // 
             // dueDatePicker
             // 
@@ -99,7 +100,7 @@
             returnedCheckBox.AutoSize = true;
             returnedCheckBox.Location = new Point(79, 170);
             returnedCheckBox.Name = "returnedCheckBox";
-            returnedCheckBox.Size = new Size(117, 19);
+            returnedCheckBox.Size = new Size(128, 19);
             returnedCheckBox.TabIndex = 10;
             returnedCheckBox.Text = "Книга возвращена";
             returnedCheckBox.UseVisualStyleBackColor = true;
@@ -140,6 +141,7 @@
             Controls.Add(bookIdTextBox);
             Controls.Add(ageLabel);
             Controls.Add(nameLabel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookReservationDialogWindow";
             Text = "Book Reservation";
             ResumeLayout(false);

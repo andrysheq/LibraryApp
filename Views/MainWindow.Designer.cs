@@ -29,6 +29,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             addUserButton = new Button();
             editUserButton = new Button();
             deleteUserButton = new Button();
@@ -417,6 +418,7 @@
             Controls.Add(editUserButton);
             Controls.Add(addUserButton);
             Controls.Add(usersListView);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainWindow";
             Text = "Библиотека";
             Load += MainWindow_Load;

@@ -18,6 +18,7 @@ namespace LibraryApp.Views
 
         private readonly BookService bookService;
         private readonly ClientService clientService;
+        private readonly BookReservationService bookReservationService;
 
         /// <summary>
         /// Инициализирует новый экземпляр класса BookReservationDialogWindow с заданным бронированием книги и контекстом базы данных.
@@ -30,6 +31,7 @@ namespace LibraryApp.Views
             BookReservation = bookReservation;
             bookService = new BookService(context);
             clientService = new ClientService(context);
+            bookReservationService = new BookReservationService(context);
             InitializeBindings();
         }
 
@@ -55,6 +57,8 @@ namespace LibraryApp.Views
         /// </summary>
         private bool ValidateBookAndClient()
         {
+            
+
             if (!int.TryParse(bookIdTextBox.Text, out int bookId))
             {
                 MessageBox.Show("Неверный формат идентификатора книги.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -79,6 +83,14 @@ namespace LibraryApp.Views
                 return false;
             }
 
+            bool isBookAvailable = bookReservationService.GetAllBookReservations()
+                .Any(br => br.BookId == bookId && br.ReturnDate == DateTime.MinValue);
+
+            if (isBookAvailable)
+            {
+                MessageBox.Show("Книга уже забронирована. Пожалуйста, выберите другую книгу.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return true;
         }
 

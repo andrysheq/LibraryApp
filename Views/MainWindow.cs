@@ -361,10 +361,16 @@ namespace LibraryApp.Views
             if(dbPerformTypeCB.SelectedIndex == 0)
             {
                 db.Database.EnsureDeleted();
+                BookListClear();
+                ClientListClear();
             }
             else if(dbPerformTypeCB.SelectedIndex == 1)
             {
                 db.Database.EnsureCreated();
+                BookListClear();
+                ClientListClear();
+                FillClientView(clientService.GetAllClients());
+                FillBookView(bookService.GetAllBooks());
             }
             else
             {
