@@ -18,7 +18,7 @@ namespace LibraryApp.Views
 
         private void InitializeBindings()
         {
-            // Привязка свойств текстовых полей к свойствам объекта User
+            // Привязка свойств текстовых полей к свойствам объекта Book
             titleTextBox.DataBindings.Add("Text", Book, "Title");
             authorTextBox.DataBindings.Add("Text", Book, "Author");
             yearTextBox.DataBindings.Add("Text", Book, "Year");
@@ -27,12 +27,59 @@ namespace LibraryApp.Views
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            // Проверка введенных данных
+            if (!ValidateTitle() || !ValidateAuthor() || !ValidateYear() || !ValidatePages())
+            {
+                return;
+            }
             DialogResult = DialogResult.OK;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Abort;
+        }
+
+        private bool ValidateTitle()
+        {
+            if (string.IsNullOrWhiteSpace(titleTextBox.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите название книги.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidateAuthor()
+        {
+            if (string.IsNullOrWhiteSpace(authorTextBox.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите автора книги.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidateYear()
+        {
+            int year;
+            if (!int.TryParse(yearTextBox.Text, out year) || year < 0)
+            {
+                MessageBox.Show("Пожалуйста, введите корректный год издания (целое неотрицательное число).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidatePages()
+        {
+            int pages;
+            if (!int.TryParse(pagesTextBox.Text, out pages) || pages < 0)
+            {
+                MessageBox.Show("Пожалуйста, введите корректное количество страниц (целое неотрицательное число).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }
