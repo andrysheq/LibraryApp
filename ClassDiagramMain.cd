@@ -50,5 +50,71 @@
       <FileName>Views\BookReservationDialogWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="LibraryApp.Views.BookDialogWindow">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACCAAAAECQIABBAAACBAAADCCAMEACEAAAQAAAAAAA=</HashCode>
+      <FileName>Views\BookDialogWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.Services.BookReservationService">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAgAAAAAABAAAAAIAAAAIAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Services\BookReservationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.Services.BookService">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAAEEAAAAABAAAACAAAAAAAAAAgAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Services\BookService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.Services.ClientService">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAABAAABACIAAAAAAAAAAAAAAADAAAAAAQ=</HashCode>
+      <FileName>Services\ClientService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.Models.Client">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAQQAQABAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Models\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.Models.BookReservation">
+    <Position X="12.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACCAAAAAAgACBAgAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\BookReservation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.Models.Book">
+    <Position X="1" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAEAEgEAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.db.ApplicationContext">
+    <Position X="3.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAACAAAAAAkAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>db\ApplicationContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryApp.Program">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

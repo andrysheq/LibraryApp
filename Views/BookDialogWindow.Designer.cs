@@ -35,8 +35,8 @@
             authorTextBox = new TextBox();
             okButton = new Button();
             cancelButton = new Button();
-            yearTextBox = new TextBox();
             pagesTextBox = new TextBox();
+            yearsTextBox = new TextBox();
             label1 = new Label();
             label2 = new Label();
             SuspendLayout();
@@ -93,19 +93,19 @@
             cancelButton.UseVisualStyleBackColor = true;
             cancelButton.Click += cancelButton_Click;
             // 
-            // yearTextBox
-            // 
-            yearTextBox.Location = new Point(189, 135);
-            yearTextBox.Name = "yearTextBox";
-            yearTextBox.Size = new Size(116, 23);
-            yearTextBox.TabIndex = 7;
-            // 
             // pagesTextBox
             // 
-            pagesTextBox.Location = new Point(189, 100);
+            pagesTextBox.Location = new Point(189, 135);
             pagesTextBox.Name = "pagesTextBox";
             pagesTextBox.Size = new Size(116, 23);
-            pagesTextBox.TabIndex = 6;
+            pagesTextBox.TabIndex = 7;
+            // 
+            // yearsTextBox
+            // 
+            yearsTextBox.Location = new Point(189, 100);
+            yearsTextBox.Name = "yearsTextBox";
+            yearsTextBox.Size = new Size(116, 23);
+            yearsTextBox.TabIndex = 6;
             // 
             // label1
             // 
@@ -132,8 +132,8 @@
             ClientSize = new Size(387, 276);
             Controls.Add(label1);
             Controls.Add(label2);
-            Controls.Add(yearTextBox);
             Controls.Add(pagesTextBox);
+            Controls.Add(yearsTextBox);
             Controls.Add(cancelButton);
             Controls.Add(okButton);
             Controls.Add(authorTextBox);
@@ -156,8 +156,8 @@
 
         #endregion
 
-        private TextBox yearTextBox;
         private TextBox pagesTextBox;
+        private TextBox yearsTextBox;
         private Label label1;
         private Label label2;
     }
