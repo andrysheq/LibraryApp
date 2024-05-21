@@ -48,7 +48,7 @@ namespace LibraryApp.Views
         /// </summary>
         private void AddUser_Click(object sender, EventArgs e)
         {
-            UserDialogWindow userWindow = new UserDialogWindow(new Client());
+            UserDialogWindow userWindow = new UserDialogWindow(new Client(), db);
             if (userWindow.ShowDialog() == DialogResult.OK)
             {
                 Client user = userWindow.User;
@@ -85,7 +85,7 @@ namespace LibraryApp.Views
                 Name = user.Name,
                 Surname = user.Surname,
                 MiddleName = user.MiddleName
-            });
+            }, db);
 
             if (userWindow.ShowDialog() == DialogResult.OK)
             {

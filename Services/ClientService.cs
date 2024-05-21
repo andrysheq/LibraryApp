@@ -113,5 +113,13 @@ namespace LibraryApp.Services
 
             return newComers;
         }
+
+        /// <summary>
+        /// Проверяет существует ли номер телефона уже у кого-то.
+        /// </summary>
+        public bool IsPhoneNumberExists(string phoneNumber)
+        {
+            return _context.Clients.Any(c => c.PhoneNumber == phoneNumber);
+        }
     }
 }
