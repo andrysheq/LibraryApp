@@ -65,6 +65,7 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "WelcomeWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ИС \"Библиотека\"";
             ResumeLayout(false);
             PerformLayout();

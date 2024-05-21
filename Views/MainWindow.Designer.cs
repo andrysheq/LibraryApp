@@ -455,6 +455,7 @@
             Controls.Add(usersListView);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Библиотека";
             Load += MainWindow_Load;
             groupBox1.ResumeLayout(false);

@@ -142,7 +142,8 @@
             Controls.Add(middleNameTextBox);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "UserDialogWindow";
-            Text = "UserWindow";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Редактор клиента";
             ResumeLayout(false);
             PerformLayout();
         }

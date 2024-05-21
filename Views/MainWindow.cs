@@ -48,12 +48,11 @@ namespace LibraryApp.Views
         /// </summary>
         private void AddUser_Click(object sender, EventArgs e)
         {
-            UserDialogWindow userWindow = new UserDialogWindow(new Client());
+            UserDialogWindow userWindow = new UserDialogWindow(new Client(), db);
             if (userWindow.ShowDialog() == DialogResult.OK)
             {
                 Client user = userWindow.User;
-                db.Clients.Add(user);
-                db.SaveChanges();
+                clientService.AddClient(user);
 
                 // Добавляем новый элемент в ListView
                 ListViewItem item = new ListViewItem(user.Id.ToString());
@@ -86,7 +85,7 @@ namespace LibraryApp.Views
                 Name = user.Name,
                 Surname = user.Surname,
                 MiddleName = user.MiddleName
-            });
+            }, db);
 
             if (userWindow.ShowDialog() == DialogResult.OK)
             {
@@ -115,8 +114,7 @@ namespace LibraryApp.Views
             if (user == null)
                 return;
 
-            db.Clients.Remove(user);
-            db.SaveChanges();
+            clientService.DeleteClient(userId);
 
             // Удаляем элемент из ListView
             usersListView.Items.Remove(selectedItem);
@@ -364,22 +362,38 @@ namespace LibraryApp.Views
         {
             if (dbPerformTypeCB.SelectedIndex == 0)
             {
-                db.Database.EnsureDeleted();
-                BookListClear();
-                ClientListClear();
+                DeleteDb();
             }
             else if (dbPerformTypeCB.SelectedIndex == 1)
             {
-                db.Database.EnsureCreated();
-                BookListClear();
-                ClientListClear();
-                FillClientView(clientService.GetAllClients());
-                FillBookView(bookService.GetAllBooks());
+                CreateDb();
             }
             else
             {
                 SaveDatabaseToJson();
             }
+        }
+
+        /// <summary>
+        /// Удаляет базу данных.
+        /// </summary>
+        private void DeleteDb()
+        {
+            db.Database.EnsureDeleted();
+            BookListClear();
+            ClientListClear();
+        }
+
+        /// <summary>
+        /// Создает базу данных.
+        /// </summary>
+        private void CreateDb()
+        {
+            db.Database.EnsureCreated();
+            BookListClear();
+            ClientListClear();
+            FillClientView(clientService.GetAllClients());
+            FillBookView(bookService.GetAllBooks());
         }
 
         /// <summary>

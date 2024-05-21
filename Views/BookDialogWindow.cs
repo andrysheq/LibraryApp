@@ -34,7 +34,7 @@ namespace LibraryApp.Views
             // Привязка свойств текстовых полей к свойствам объекта Book
             titleTextBox.DataBindings.Add("Text", Book, "Title");
             authorTextBox.DataBindings.Add("Text", Book, "Author");
-            yearTextBox.DataBindings.Add("Text", Book, "Year");
+            yearsTextBox.DataBindings.Add("Text", Book, "Year");
             pagesTextBox.DataBindings.Add("Text", Book, "PageCount");
         }
 
@@ -91,7 +91,7 @@ namespace LibraryApp.Views
         private bool ValidateYear()
         {
             int year;
-            if (!int.TryParse(yearTextBox.Text, out year) || year < 1990 || year > 2024)
+            if (!int.TryParse(yearsTextBox.Text, out year) || year < 1990 || year > 2024)
             {
                 MessageBox.Show("Пожалуйста, введите корректный год издания (целое число больше нуля).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

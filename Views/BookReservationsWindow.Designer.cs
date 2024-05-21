@@ -134,6 +134,7 @@
             Controls.Add(bookReservationsListView);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookReservationsWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Меню учёта выданных книг";
             ResumeLayout(false);
         }

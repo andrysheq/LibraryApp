@@ -143,6 +143,7 @@
             Controls.Add(nameLabel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookReservationDialogWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Редактор резервации книги";
             ResumeLayout(false);
             PerformLayout();

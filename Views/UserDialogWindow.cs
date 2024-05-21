@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using LibraryApp.Models;
+using LibraryApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp.Views
@@ -11,15 +12,17 @@ namespace LibraryApp.Views
         /// Пользователь, информация о котором редактируется.
         /// </summary>
         public Client User { get; private set; }
+        private readonly ClientService clientService;
 
         /// <summary>
         /// Инициализирует новый экземпляр окна для редактирования информации о пользователе.
         /// </summary>
         /// <param name="user">Пользователь, информацию о котором нужно редактировать.</param>
-        public UserDialogWindow(Client user)
+        public UserDialogWindow(Client user, db.ApplicationContext context)
         {
             InitializeComponent();
             User = user;
+            clientService = new ClientService(context);
             InitializeBindings();
         }
 
@@ -73,6 +76,11 @@ namespace LibraryApp.Views
             if (!System.Text.RegularExpressions.Regex.IsMatch(phoneTextBox.Text, @"^\+7\d{10}$"))
             {
                 MessageBox.Show("Номер телефона должен быть в формате +7xxxxxxxxxx и содержать 11 цифр.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (clientService.IsPhoneNumberExists(phoneTextBox.Text))
+            {
+                MessageBox.Show("Пользователь с таким номером телефона уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
