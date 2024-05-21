@@ -82,7 +82,7 @@ namespace LibraryApp.Services
         /// <returns>Список книг, удовлетворяющих поисковому запросу по автору.</returns>
         public List<Book> SearchBooksByAuthor(string query)
         {
-            return _context.Books.ToList().Where(book => book.Author.Contains(query)).ToList();
+            return _context.Books.ToList().Where(book => book.Author.ToLower().Contains(query.ToLower())).ToList();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace LibraryApp.Services
         /// <returns>Список книг, удовлетворяющих поисковому запросу по названию.</returns>
         public List<Book> SearchBooksByTitle(string query)
         {
-            return _context.Books.ToList().Where(book => book.Title.Contains(query)).ToList();
+            return _context.Books.ToList().Where(book => book.Title.ToLower().Contains(query.ToLower())).ToList();
         }
     }
 }
