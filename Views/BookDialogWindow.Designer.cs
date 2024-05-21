@@ -142,6 +142,7 @@
             Controls.Add(nameLabel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookDialogWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Редактор книги";
             ResumeLayout(false);
             PerformLayout();
