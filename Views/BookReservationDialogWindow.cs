@@ -19,19 +19,21 @@ namespace LibraryApp.Views
         private readonly BookService bookService;
         private readonly ClientService clientService;
         private readonly BookReservationService bookReservationService;
+        private string _type;
 
         /// <summary>
         /// Инициализирует новый экземпляр класса BookReservationDialogWindow с заданным бронированием книги и контекстом базы данных.
         /// </summary>
         /// <param name="bookReservation">Бронирование книги, с которым будет работать окно диалога.</param>
         /// <param name="context">Контекст базы данных.</param>
-        public BookReservationDialogWindow(BookReservation bookReservation, db.ApplicationContext context)
+        public BookReservationDialogWindow(BookReservation bookReservation, db.ApplicationContext context, string type)
         {
             InitializeComponent();
             BookReservation = bookReservation;
             bookService = new BookService(context);
             clientService = new ClientService(context);
             bookReservationService = new BookReservationService(context);
+            _type = type;
             InitializeBindings();
         }
 
@@ -82,14 +84,16 @@ namespace LibraryApp.Views
                 MessageBox.Show("Клиент с указанным идентификатором не существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            bool isBookAvailable = bookReservationService.GetAllBookReservations()
-                .Any(br => br.BookId == bookId && br.ReturnDate == DateTime.MinValue);
-
-            if (isBookAvailable)
+            if (_type.Equals("add"))
             {
-                MessageBox.Show("Книга уже забронирована. Пожалуйста, выберите другую книгу.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                bool isBookAvailable = bookReservationService.GetAllBookReservations()
+                    .Any(br => br.BookId == bookId && br.ReturnDate == DateTime.MinValue);
+
+                if (isBookAvailable)
+                {
+                    MessageBox.Show("Книга уже забронирована. Пожалуйста, выберите другую книгу.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             return true;
         }

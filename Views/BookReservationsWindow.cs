@@ -64,7 +64,7 @@ namespace LibraryApp.Views
         /// </summary>
         private void AddReservation_Click(object sender, EventArgs e)
         {
-            BookReservationDialogWindow bookReservationWindow = new BookReservationDialogWindow(new BookReservation(), _context);
+            BookReservationDialogWindow bookReservationWindow = new BookReservationDialogWindow(new BookReservation(), _context, "add");
             if (bookReservationWindow.ShowDialog() == DialogResult.OK)
             {
                 BookReservation bookReservation = bookReservationWindow.BookReservation;
@@ -118,7 +118,7 @@ namespace LibraryApp.Views
                 IssueDate = reservation.IssueDate,
                 DueDate = reservation.DueDate,
                 ReturnDate = reservation.ReturnDate,
-            }, _context);
+            }, _context, "edit");
 
             if (bookReservationWindow.ShowDialog() == DialogResult.OK)
             {
