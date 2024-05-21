@@ -142,7 +142,7 @@
             Controls.Add(middleNameTextBox);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "UserDialogWindow";
-            Text = "UserWindow";
+            Text = "Редактор клиента";
             ResumeLayout(false);
             PerformLayout();
         }
