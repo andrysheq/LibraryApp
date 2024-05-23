@@ -50,6 +50,7 @@
             PageCount = new ColumnHeader();
             bookReservationMenuButton = new Button();
             groupBox1 = new GroupBox();
+            clientsFilterLabel = new Label();
             dropFiltersLink = new LinkLabel();
             filterSearchButton = new Button();
             newComerRadioButton = new RadioButton();
@@ -216,6 +217,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(clientsFilterLabel);
             groupBox1.Controls.Add(dropFiltersLink);
             groupBox1.Controls.Add(filterSearchButton);
             groupBox1.Controls.Add(newComerRadioButton);
@@ -226,6 +228,14 @@
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "Фильтр";
+            // 
+            // clientsFilterLabel
+            // 
+            clientsFilterLabel.AutoSize = true;
+            clientsFilterLabel.Location = new Point(16, 83);
+            clientsFilterLabel.Name = "clientsFilterLabel";
+            clientsFilterLabel.Size = new Size(0, 15);
+            clientsFilterLabel.TabIndex = 4;
             // 
             // dropFiltersLink
             // 
@@ -362,10 +372,8 @@
             searchlabe.AutoSize = true;
             searchlabe.Location = new Point(14, 72);
             searchlabe.Name = "searchlabe";
-            searchlabe.Size = new Size(113, 15);
+            searchlabe.Size = new Size(0, 15);
             searchlabe.TabIndex = 4;
-            searchlabe.Text = "Ничего не найдено";
-            searchlabe.Visible = false;
             // 
             // label3
             // 
@@ -509,5 +517,6 @@
         private Label label4;
         private ComboBox typeSortComboBox;
         private Button sortButton;
+        private Label clientsFilterLabel;
     }
 }

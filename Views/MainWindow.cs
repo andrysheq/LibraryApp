@@ -114,10 +114,20 @@ namespace LibraryApp.Views
             if (user == null)
                 return;
 
-            clientService.DeleteClient(userId);
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить пользователя?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
-            // Удаляем элемент из ListView
-            usersListView.Items.Remove(selectedItem);
+            if (result == DialogResult.Yes)
+            {
+                clientService.DeleteClient(userId);
+
+                // Удаляем элемент из ListView
+                usersListView.Items.Remove(selectedItem);
+            }
         }
 
         /// <summary>
@@ -192,11 +202,22 @@ namespace LibraryApp.Views
             if (book == null)
                 return;
 
-            db.Books.Remove(book);
-            db.SaveChanges();
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить эту книгу?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
             // Удаляем элемент из ListView
-            bookList.Items.Remove(selectedItem);
+            if (result == DialogResult.Yes)
+            {
+                db.Books.Remove(book);
+                db.SaveChanges();
+
+                // Удаляем элемент из ListView
+                bookList.Items.Remove(selectedItem);
+            }
         }
         /// <summary>
         /// Очистка списка книг
@@ -291,7 +312,6 @@ namespace LibraryApp.Views
         /// </summary>
         private void filterSearchButton_Click(object sender, EventArgs e)
         {
-            ClientListClear();
             List<Client> clients = new List<Client>();
             if (debtorsRadioButton.Checked)
             {
@@ -303,12 +323,21 @@ namespace LibraryApp.Views
             }
             else
             {
-                clients = clientService.GetAllClients();
+                MessageBox.Show(
+                    "Пожалуйста, выберите тип фильтрации.",
+                    "Предупреждение",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
             }
+            ClientListClear();
             if (clients.Count > 0)
             {
                 FillClientView(clients);
             }
+            clientsFilterLabel.Text = "Найдено: " + clients.Count.ToString();
+            clientsFilterLabel.Visible = true;
         }
 
         /// <summary>
@@ -318,7 +347,9 @@ namespace LibraryApp.Views
         {
             newComerRadioButton.Checked = false;
             debtorsRadioButton.Checked = false;
-            FillClientView(clientService.GetAllClients());
+            List<Client> clients = clientService.GetAllClients();
+            FillClientView(clients);
+            clientsFilterLabel.Visible = false;
         }
 
         /// <summary>
@@ -338,11 +369,8 @@ namespace LibraryApp.Views
                 results = bookService.SearchBooksByTitle(searchQuery);
             }
             FillBookView(results);
-
-            if (results.Count <= 0)
-            {
-                searchlabe.Visible = true;
-            }
+            searchlabe.Text = "Найдено: " + results.Count.ToString();
+            searchlabe.Visible = true;
         }
 
         /// <summary>
@@ -351,8 +379,10 @@ namespace LibraryApp.Views
         private void searchDropLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             searchTextBox.Text = "";
+            List<Book> results = bookService.GetAllBooks();
+            FillBookView(results);
+            searchlabe.Text = "Всего: " + results.Count.ToString();
             searchlabe.Visible = false;
-            FillBookView(bookService.GetAllBooks());
         }
 
         /// <summary>
@@ -379,9 +409,18 @@ namespace LibraryApp.Views
         /// </summary>
         private void DeleteDb()
         {
-            db.Database.EnsureDeleted();
-            BookListClear();
-            ClientListClear();
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить базу данных?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+            if (result == DialogResult.Yes)
+            {
+                db.Database.EnsureDeleted();
+                BookListClear();
+                ClientListClear();
+            }
         }
 
         /// <summary>
