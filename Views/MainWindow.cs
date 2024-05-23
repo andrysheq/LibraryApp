@@ -312,7 +312,6 @@ namespace LibraryApp.Views
         /// </summary>
         private void filterSearchButton_Click(object sender, EventArgs e)
         {
-            ClientListClear();
             List<Client> clients = new List<Client>();
             if (debtorsRadioButton.Checked)
             {
@@ -324,12 +323,21 @@ namespace LibraryApp.Views
             }
             else
             {
-                clients = clientService.GetAllClients();
+                MessageBox.Show(
+                    "Пожалуйста, выберите тип фильтрации.",
+                    "Предупреждение",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
             }
+            ClientListClear();
             if (clients.Count > 0)
             {
                 FillClientView(clients);
             }
+            clientsFilterLabel.Text = "Найдено: " + clients.Count.ToString();
+            clientsFilterLabel.Visible = true;
         }
 
         /// <summary>
@@ -339,7 +347,9 @@ namespace LibraryApp.Views
         {
             newComerRadioButton.Checked = false;
             debtorsRadioButton.Checked = false;
-            FillClientView(clientService.GetAllClients());
+            List<Client> clients = clientService.GetAllClients();
+            FillClientView(clients);
+            clientsFilterLabel.Visible = false;
         }
 
         /// <summary>
@@ -359,11 +369,8 @@ namespace LibraryApp.Views
                 results = bookService.SearchBooksByTitle(searchQuery);
             }
             FillBookView(results);
-
-            if (results.Count <= 0)
-            {
-                searchlabe.Visible = true;
-            }
+            searchlabe.Text = "Найдено: " + results.Count.ToString();
+            searchlabe.Visible = true;
         }
 
         /// <summary>
@@ -372,8 +379,10 @@ namespace LibraryApp.Views
         private void searchDropLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             searchTextBox.Text = "";
+            List<Book> results = bookService.GetAllBooks();
+            FillBookView(results);
+            searchlabe.Text = "Всего: " + results.Count.ToString();
             searchlabe.Visible = false;
-            FillBookView(bookService.GetAllBooks());
         }
 
         /// <summary>
