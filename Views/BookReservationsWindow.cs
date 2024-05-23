@@ -150,10 +150,21 @@ namespace LibraryApp.Views
                 return;
 
             int bookReservationId = int.Parse(selectedItem.SubItems[0].Text);
-            bookReservationService.DeleteBookReservation(bookReservationId);
 
-            // Удаляем элемент из ListView
-            bookReservationsListView.Items.Remove(selectedItem);
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить запись о выдаче книги?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                bookReservationService.DeleteBookReservation(bookReservationId);
+
+                // Удаляем элемент из ListView
+                bookReservationsListView.Items.Remove(selectedItem);
+            }
         }
 
         /// <summary>
