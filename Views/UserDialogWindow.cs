@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp.Views
 {
+    /// <summary>
+    /// Окно редактирования или создания пользователя.
+    /// </summary>
     public partial class UserDialogWindow : Form
     {
         /// <summary>

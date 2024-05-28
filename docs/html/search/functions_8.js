@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['updatebook_0',['UpdateBook',['../class_library_app_1_1_services_1_1_book_service.html#a101ac0f59e823c2411a80d4f58f9ce2e',1,'LibraryApp::Services::BookService']]],
-  ['updatebookreservation_1',['UpdateBookReservation',['../class_library_app_1_1_services_1_1_book_reservation_service.html#a57fbeafdb506047242f64e2dcdce62dc',1,'LibraryApp::Services::BookReservationService']]],
-  ['updateclient_2',['UpdateClient',['../class_library_app_1_1_services_1_1_client_service.html#add0ac21bf010294fed79d9e4ecfe0160',1,'LibraryApp::Services::ClientService']]],
-  ['userdialogwindow_3',['UserDialogWindow',['../class_library_app_1_1_views_1_1_user_dialog_window.html#a3bed07f4da171c4687e0e9456a28cb92',1,'LibraryApp::Views::UserDialogWindow']]]
+  ['savedatabasetojson_0',['SaveDatabaseToJson',['../class_library_app_1_1_views_1_1_main_window.html#a2a58cb726992551cd89943b3d58f1f0a',1,'LibraryApp::Views::MainWindow']]],
+  ['searchbooksbyauthor_1',['SearchBooksByAuthor',['../class_library_app_1_1_services_1_1_book_service.html#a46ed6695564a05e78e640905f6a2edbe',1,'LibraryApp::Services::BookService']]],
+  ['searchbooksbytitle_2',['SearchBooksByTitle',['../class_library_app_1_1_services_1_1_book_service.html#a3e44964154f2b6cc5817ce79a6337d21',1,'LibraryApp::Services::BookService']]]
 ];
