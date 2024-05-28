@@ -11,12 +11,12 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Views.UserDialogWindow">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="5" Y="0.5" Width="1.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>QCCDAAACACQIAAAAAACAAAADCAAAEgAAACAQACACAAA=</HashCode>
+      <HashCode>QCCDAAACACQIAAAAAACAAAADCAAAEgAAQCAQACACAAA=</HashCode>
       <FileName>Views\UserDialogWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,7 +31,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Views.BookReservationsWindow">
-    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Position X="8.75" Y="0.5" Width="2.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -41,48 +41,51 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Views.BookReservationDialogWindow">
-    <Position X="10.5" Y="0.5" Width="1.5" />
+    <Position X="11.25" Y="0.5" Width="2.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AIACAAAAAiQIAAAAQACAAAgDCAAAEACQSAAQAACBAAw=</HashCode>
+      <HashCode>AIACAAAAAiQIAAQAQACAAAgDCAAAEACQSAAQAACBAAw=</HashCode>
       <FileName>Views\BookReservationDialogWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Views.BookDialogWindow">
-    <Position X="12.5" Y="0.5" Width="1.5" />
+    <Position X="14" Y="0.5" Width="1.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AACCAAAAECQIABBAAACBAAADCCAMEACEAAAQAAAAAAA=</HashCode>
+      <HashCode>AAKCAAAAECQIABBAAACBAAADCCAIEACEAAAQAAAAAAA=</HashCode>
       <FileName>Views\BookDialogWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Services.BookReservationService">
-    <Position X="5" Y="4" Width="1.5" />
+    <Position X="4.75" Y="4" Width="2" />
     <TypeIdentifier>
       <HashCode>ABAAAgAAAAAABAAAAAIAAAAIAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Services\BookReservationService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Services.BookService">
-    <Position X="6.75" Y="4" Width="1.5" />
+    <Position X="7.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BBAAAEEAAAAABAAAACAAAAAAAAAAgAAAAAAAAAgAAAA=</HashCode>
       <FileName>Services\BookService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Services.ClientService">
-    <Position X="8.75" Y="4" Width="1.5" />
+    <Position X="9.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAABAAABACIAAAAAAAAAAAAAAADAAAAAAQ=</HashCode>
+      <HashCode>AAAAEAAAAAAABAgABACIAAAAAAAAAAAAAAADAAAAAAQ=</HashCode>
       <FileName>Services\ClientService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LibraryApp.Models.Client">
     <Position X="10.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAEAAAQQAQABAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Models\Client.cs</FileName>
@@ -97,6 +100,9 @@
   </Class>
   <Class Name="LibraryApp.Models.Book">
     <Position X="1" Y="7" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAACAAAABAAAAEAEgEAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Book.cs</FileName>

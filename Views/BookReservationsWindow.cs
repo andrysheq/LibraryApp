@@ -9,15 +9,33 @@ using Microsoft.VisualBasic.ApplicationServices;
 
 namespace LibraryApp.Views
 {
+    /// <summary>
+    /// Представляет окно для управления бронированием книг.
+    /// </summary>
     public partial class BookReservationsWindow : Form
     {
+        /// <summary>
+        /// Контекст базы данных.
+        /// </summary>
         private readonly db.ApplicationContext _context;
+
+        /// <summary>
+        /// Сервис для управления книгами.
+        /// </summary>
         private readonly BookService bookService;
+
+        /// <summary>
+        /// Сервис для управления клиентами.
+        /// </summary>
         private readonly ClientService clientService;
+
+        /// <summary>
+        /// Сервис для управления бронированием книг.
+        /// </summary>
         private readonly BookReservationService bookReservationService;
 
         /// <summary>
-        /// Инициализирует новый экземпляр класса BookReservationsWindow с заданным контекстом базы данных.
+        /// Инициализирует новый экземпляр класса <see cref="BookReservationsWindow"/> с заданным контекстом базы данных.
         /// </summary>
         /// <param name="context">Контекст базы данных.</param>
         public BookReservationsWindow(db.ApplicationContext context)
@@ -30,16 +48,21 @@ namespace LibraryApp.Views
             Load += BookReservationsWindow_Load;
         }
 
+        /// <summary>
+        /// Обрабатывает событие загрузки окна BookReservationsWindow. Гарантирует создание базы данных и загружает начальные данные.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Экземпляр <see cref="EventArgs"/>, содержащий данные события.</param>
         private void BookReservationsWindow_Load(object sender, EventArgs e)
         {
-            // Гарантируем, что база данных создана
+            // Гарантирует, что база данных создана
             _context.Database.EnsureCreated();
-            // Загружаем данные из БД
+            // Загружает данные из базы данных
             _context.Clients.Load();
             _context.Books.Load();
             _context.BookReservations.Load();
 
-            // Добавляем элементы в ListView из БД
+            // Добавляет элементы в ListView из базы данных
             foreach (var reservation in _context.BookReservations.Local)
             {
                 ListViewItem item = new ListViewItem(reservation.Id.ToString());

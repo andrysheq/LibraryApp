@@ -12,6 +12,9 @@ namespace LibraryApp.Services
     /// </summary>
     public class ClientService
     {
+        /// <summary>
+        /// Контекст базы данных для доступа к таблицам и выполнению операций.
+        /// </summary>
         private readonly db.ApplicationContext _context;
 
         /// <summary>

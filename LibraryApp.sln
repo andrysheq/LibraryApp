@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryApp", "LibraryApp.csproj", "{BBB18933-982A-427E-A977-2C82358F30C3}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupInstaller", "SetupInstaller\SetupInstaller.vdproj", "{708F0136-5A57-4E1A-B12B-18FEB1DB3BE7}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupInstaller", "..\SetupInstaller\SetupInstaller.vdproj", "{D8159F39-1114-4A4F-BC91-F48B1C352025}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{BBB18933-982A-427E-A977-2C82358F30C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB18933-982A-427E-A977-2C82358F30C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB18933-982A-427E-A977-2C82358F30C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{708F0136-5A57-4E1A-B12B-18FEB1DB3BE7}.Debug|Any CPU.ActiveCfg = Debug
-		{708F0136-5A57-4E1A-B12B-18FEB1DB3BE7}.Release|Any CPU.ActiveCfg = Release
+		{D8159F39-1114-4A4F-BC91-F48B1C352025}.Debug|Any CPU.ActiveCfg = Debug
+		{D8159F39-1114-4A4F-BC91-F48B1C352025}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

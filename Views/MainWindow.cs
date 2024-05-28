@@ -10,14 +10,39 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace LibraryApp.Views
 {
+    /// <summary>
+    /// Представляет главное окно приложения.
+    /// </summary>
     public partial class MainWindow : Form
     {
+        /// <summary>
+        /// Контекст приложения для операций с базой данных.
+        /// </summary>
         private db.ApplicationContext db = new db.ApplicationContext();
+
+        /// <summary>
+        /// Сервис для управления книгами.
+        /// </summary>
         private readonly BookService bookService;
+
+        /// <summary>
+        /// Сервис для управления клиентами.
+        /// </summary>
         private readonly ClientService clientService;
+
+        /// <summary>
+        /// Сервис для управления бронированием книг.
+        /// </summary>
         private readonly BookReservationService bookReservationService;
+
+        /// <summary>
+        /// Элемент управления ListView для отображения пользователей.
+        /// </summary>
         private ListView usersListView;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MainWindow"/>.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -26,22 +51,29 @@ namespace LibraryApp.Views
             bookReservationService = new BookReservationService(db);
         }
 
+        /// <summary>
+        /// Обрабатывает событие загрузки окна MainWindow. Гарантирует создание базы данных и загружает начальные данные.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Экземпляр <see cref="EventArgs"/>, содержащий данные события.</param>
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            // Гарантируем, что база данных создана
+            // Гарантирует, что база данных создана
             db.Database.EnsureCreated();
-            // Загружаем данные из БД
+            // Загружает данные из базы данных
             db.Clients.Load();
             db.Books.Load();
 
-            // Добавляем элементы в ListView из БД
+            // Добавляет элементы в ListView из базы данных
             FillClientView(clientService.GetAllClients());
             FillBookView(bookService.GetAllBooks());
 
+            // Устанавливает значения по умолчанию для комбобоксов
             typeSearchComboBox.SelectedIndex = 0;
             typeSortComboBox.SelectedIndex = 0;
             dbPerformTypeCB.SelectedIndex = 0;
         }
+
 
         /// <summary>
         /// Обработчик нажатия кнопки "Добавить пользователя".
@@ -336,7 +368,7 @@ namespace LibraryApp.Views
             {
                 FillClientView(clients);
             }
-            clientsFilterLabel.Text = "Найдено: " + clients.Count.ToString();
+            clientsFilterLabel.Text = "Найдено: " + clients.Count.ToString() + "из " + clientService.GetAllClients().Count.ToString();
             clientsFilterLabel.Visible = true;
         }
 
@@ -369,7 +401,7 @@ namespace LibraryApp.Views
                 results = bookService.SearchBooksByTitle(searchQuery);
             }
             FillBookView(results);
-            searchlabe.Text = "Найдено: " + results.Count.ToString();
+            searchlabe.Text = "Найдено: " + results.Count.ToString() + "из " + clientService.GetAllClients().Count.ToString();
             searchlabe.Visible = true;
         }
 
