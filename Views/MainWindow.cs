@@ -368,7 +368,7 @@ namespace LibraryApp.Views
             {
                 FillClientView(clients);
             }
-            clientsFilterLabel.Text = "Найдено: " + clients.Count.ToString() + "из " + clientService.GetAllClients().Count.ToString();
+            clientsFilterLabel.Text = "Найдено: " + clients.Count.ToString() + " из " + clientService.GetAllClients().Count.ToString();
             clientsFilterLabel.Visible = true;
         }
 
@@ -401,7 +401,7 @@ namespace LibraryApp.Views
                 results = bookService.SearchBooksByTitle(searchQuery);
             }
             FillBookView(results);
-            searchlabe.Text = "Найдено: " + results.Count.ToString() + "из " + clientService.GetAllClients().Count.ToString();
+            searchlabe.Text = "Найдено: " + results.Count.ToString() + " из " + clientService.GetAllClients().Count.ToString();
             searchlabe.Visible = true;
         }
 
